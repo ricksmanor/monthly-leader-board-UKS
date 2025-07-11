@@ -3,37 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monthly Embed Fullscreen</title>
+  <title>Monthly Embed</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    #iframe-container {
-      width: 100%;
-      height: 100%;
-    }
     iframe {
-      width: 100%;
-      height: 100%;
+      width: 800px;
+      height: 645px;
       border: 0;
-    }
-    #start-btn {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
+      overflow: hidden;
     }
   </style>
 </head>
 <body>
-
-  <button id="start-btn">Start Fullscreen</button>
 
   <div id="iframe-container">
     <iframe
@@ -43,35 +23,13 @@
   </div>
 
   <script>
-    const iframeContainer = document.getElementById('iframe-container');
-    const startBtn = document.getElementById('start-btn');
-
-    function enterFullscreen() {
-      if (iframeContainer.requestFullscreen) {
-        iframeContainer.requestFullscreen();
-      } else if (iframeContainer.webkitRequestFullscreen) {
-        iframeContainer.webkitRequestFullscreen();
-      } else if (iframeContainer.msRequestFullscreen) {
-        iframeContainer.msRequestFullscreen();
-      }
-    }
-
-    startBtn.addEventListener('click', () => {
-      startBtn.style.display = 'none';
-      enterFullscreen();
-    });
-
     function refreshIframe() {
       const iframe = document.getElementById('sharepoint-frame');
-      iframe.src = iframe.src;
-
-      // Try to re-enter fullscreen
-      if (document.fullscreenElement == null) {
-        enterFullscreen();
-      }
+      const src = iframe.src;
+      iframe.src = src;
     }
 
-    // Refresh every 2 minutes
+    // Refresh every 2 minutes (120000 ms)
     setInterval(refreshIframe, 120000);
   </script>
 
