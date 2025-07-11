@@ -2,26 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Monthly Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monthly Embed</title>
+  <style>
+    iframe {
+      width: 800px;
+      height: 645px;
+      border: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="iframe-container">
+    <iframe
+      id="sharepoint-frame"
+      src="https://ukstoragecompany.sharepoint.com/sites/CRMProject/_layouts/15/Doc.aspx?sourcedoc={9d7b4281-1027-49c5-a27b-c1f0de538e57}&amp;action=embedview&amp;wdAllowInteractivity=False&amp;Item='Leaderboard'!A1:H22&amp;wdInConfigurator=True&amp;waccluster=GUK1"
+    ></iframe>
+  </div>
+
   <script>
     function refreshIframe() {
-      const iframe = document.getElementById("leaderboardFrame");
-      iframe.src = iframe.src;
+      const iframe = document.getElementById('sharepoint-frame');
+      const src = iframe.src;
+      iframe.src = src;
     }
 
     // Refresh every 2 minutes (120000 ms)
     setInterval(refreshIframe, 120000);
   </script>
-</head>
-<body>
-  <div>
-    <iframe
-      id="leaderboardFrame"
-      width="800"
-      height=" frameborder="0"
-      scrolling="no"
-      src="https://ukstoragecompany.sharepoint.com/sites/CRMProject/_layouts/15/Doc.aspx?sourcedoc={9d7b4281-1027-49c5-a27b-c1f0de">
-</div>
+
 </body>
 </html>
